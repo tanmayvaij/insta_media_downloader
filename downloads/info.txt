@@ -1,0 +1,1 @@
+* all the media will be downloaded in this directory *
