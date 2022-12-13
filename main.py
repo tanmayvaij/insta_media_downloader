@@ -1,12 +1,9 @@
 from packages.Insta_Media_Downloader import Insta_Media_Downloader
-from os import environ
+from packages.settings import INSTAGRAM_PASSWORD, INSTAGRAM_USERNAME, TARGET_ACCOUNT
 
 def main() -> None:
-    downloader = Insta_Media_Downloader( 
-        environ.get('INSTAGRAM_USERNAME'), 
-        environ.get('INSTAGRAM_PASSWORD')    
-    )
-    downloader.download_all_media(environ.get("TARGET_ACCOUNT"))
+    downloader = Insta_Media_Downloader(INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD)
+    downloader.download_all_media(TARGET_ACCOUNT)
     
 if __name__ == "__main__":
 
