@@ -28,7 +28,7 @@ class Insta_Media_Downloader:
     # Method for downloading all the user medias
     def download_all_media(self, target: str) -> None:
 
-        DOWNLOAD_PATH = "./downloads"
+        DOWNLOAD_PATH = f"./downloads_{target}"
         
         # Getting user id from username
         print("--> Getting user id from username")
