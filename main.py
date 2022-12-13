@@ -1,8 +1,12 @@
-from package.Insta_Media_Downloader import Insta_Media_Downloader
+from packages.Insta_Media_Downloader import Insta_Media_Downloader
+from os import environ
 
 def main() -> None:
-    downloader = Insta_Media_Downloader("tony_bot_224", "Tejomay@000")
-    downloader.download_all_media("blue_dive_")
+    downloader = Insta_Media_Downloader( 
+        environ.get('INSTAGRAM_USERNAME'), 
+        environ.get('INSTAGRAM_PASSWORD')    
+    )
+    downloader.download_all_media(environ.get("TARGET_ACCOUNT"))
     
 if __name__ == "__main__":
 

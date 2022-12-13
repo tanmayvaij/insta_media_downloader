@@ -1,7 +1,17 @@
 from instagrapi import Client
 from dotenv import load_dotenv
+from os import mkdir, path
 
+# loading environment variables
 load_dotenv("./config.env")
+
+# Check if the downloads folder exists not, folder is created if does not exists
+def createFolder(folder: str) -> None:
+    if path.exists(folder):
+        print("--> Download folder already exists")
+    else:
+        mkdir(folder)
+        print("--> Created downloads folder")
 
 class Insta_Media_Downloader:
 
@@ -29,6 +39,8 @@ class Insta_Media_Downloader:
         print("--> Getting all user media details")
         media_list = self.__client.user_medias(user_id)
         print("--> Got all media successfully")
+
+        createFolder(DOWNLOAD_PATH)
 
         # Starting the download process 
         print("--> Starting the download process")
