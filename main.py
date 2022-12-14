@@ -3,7 +3,8 @@ from packages.settings import INSTAGRAM_PASSWORD, INSTAGRAM_USERNAME, TARGET_ACC
 
 def main() -> None:
     downloader = Insta_Media_Downloader(INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD)
-    downloader.download_all_media(TARGET_ACCOUNT)
+    downloader.download_by_url('https://www.instagram.com/p/Bygha2KJ3yz/')
+    # downloader.download_all_media(TARGET_ACCOUNT)
     
 if __name__ == "__main__":
 
