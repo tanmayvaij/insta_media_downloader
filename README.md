@@ -14,7 +14,7 @@ python >= 3.8
 python3 install -r requirements.txt
 ```
 
-### 2. Install all the script dependencies. ( For Windows )
+### Install all the script dependencies. ( For Windows )
 ```sh
 python install -r requirements.txt
 ```
@@ -39,7 +39,7 @@ MEDIA_URL="<url_of_target_media>"
 python3 ./main.py
 ```
 
-### 4. Start the script. ( For Linux / Mac )
+### Start the script. ( Windows )
 ```sh
-python3 ./main.py
+python ./main.py
 ```
