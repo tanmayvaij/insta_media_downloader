@@ -11,7 +11,7 @@ def createFolder(folder: str) -> None:
 
 class Insta_Media_Downloader:
 
-    def __init__(self, username: str, password: str):
+    def __init__(self, username: str, password: str, posts_amount: str):
 
         # client instance created
         self.__client = Client()
@@ -21,9 +21,13 @@ class Insta_Media_Downloader:
         self.__client.login(username, password)
         print("--> Logged in successfully")
 
+        # setting no. of posts to download
+        self.posts_amount = int(posts_amount)
+
     # Method for downloading all the user medias
     def download_all_media(self, target: str) -> None:
 
+        # downloads folder path
         DOWNLOAD_PATH = f"./downloads_{target}"
         
         # Getting user id from username
@@ -33,7 +37,7 @@ class Insta_Media_Downloader:
 
         # Getting all the details of the user medias in form of list
         print("--> Getting all user media details")
-        media_list = self.__client.user_medias(user_id)
+        media_list = self.__client.user_medias(user_id, self.posts_amount)
         print("--> Got all media successfully")
 
         createFolder(DOWNLOAD_PATH)
@@ -69,6 +73,7 @@ class Insta_Media_Downloader:
 
         print("--> Finished")
 
+    # Method for downloading media by url
     def download_by_url(self, url: str): 
 
         # Getting media pk from url
@@ -77,23 +82,34 @@ class Insta_Media_Downloader:
         # Getting information about the media
         info = self.__client.media_info(pk)
 
-        print(info)
-
+        # Downloads folder path
         DOWNLOAD_PATH = f"./downloads_{pk}"
 
         createFolder(DOWNLOAD_PATH)
         
         if info.media_type == 1:
+            # Method for downloading photo
             self.__client.photo_download(pk, DOWNLOAD_PATH)
+            print(f"--> Downloaded media with id - {pk}")
 
         elif info.media_type == 2 and info.product_type == "feed":
+            # Method for downloading video
             self.__client.video_download(pk, DOWNLOAD_PATH)
+            print(f"--> Downloaded media with id - {pk}")
     
         elif info.media_type == 2 and info.product_type == "igtv":
+            # Method for downloading igtv video
             self.__client.igtv_download(pk, DOWNLOAD_PATH)
+            print(f"--> Downloaded media with id - {pk}")
 
         elif info.media_type == 2 and info.product_type == "clips":
+            # Method for downloading reel
             self.__client.clip_download(pk, DOWNLOAD_PATH)
+            print(f"--> Downloaded media with id - {pk}")
 
         else:
+            # Method for downloading album (more than one media)
             self.__client.album_download(pk, DOWNLOAD_PATH)
+            print(f"--> Downloaded media with id - {pk}")
+
+        print("--> Finished")
