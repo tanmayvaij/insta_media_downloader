@@ -2,12 +2,24 @@
 
 ## Setup Instructions
 
-### 1. Install all the script dependencies.
+### Rquirements:-
+```
+python >= 3.8
+```
+
+### 1. Clone / Download the repository 
+
+### 2. Install all the script dependencies. ( For Linux / Mac )
 ```sh
 python3 install -r requirements.txt
 ```
 
-### 2. In the packages/setting.py add the following details. Either of the last three variables can be empty string.
+### 2. Install all the script dependencies. ( For Windows )
+```sh
+python install -r requirements.txt
+```
+
+### 3. In the packages/setting.py add the following details. Either of the last three variables can be empty string.
 ```env
 
 INSTAGRAM_USERNAME="<your_instagram_username>"
@@ -22,7 +34,12 @@ MEDIA_URL="<url_of_target_media>"
 
 ```
 
-### 3. Start the script
+### 4. Start the script. ( For Linux / Mac )
+```sh
+python3 ./main.py
+```
+
+### 4. Start the script. ( For Linux / Mac )
 ```sh
 python3 ./main.py
 ```
